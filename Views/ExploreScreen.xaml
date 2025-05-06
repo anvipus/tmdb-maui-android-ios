@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MyMauiApp.ViewModels"
+             xmlns:models="clr-namespace:MyMauiApp.Models"
+             x:Class="MyMauiApp.Views.ExploreScreen"
+             x:DataType="viewmodels:ExploreViewModel"
+             BackgroundColor="White">
+
+    <!-- ✅ Custom TitleView -->
+    <NavigationPage.TitleView>
+        <Grid Padding="16,0" ColumnDefinitions="*,Auto" VerticalOptions="Center">
+            <Label Text="Movie DB"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center" />
+
+            <ImageButton Source="search.png"
+                         HeightRequest="24"
+                         WidthRequest="24"
+                         Aspect="AspectFit"
+                         BackgroundColor="Transparent"
+                         VerticalOptions="Center"
+                         HorizontalOptions="End"
+                         Command="{Binding NavigateToSearchCommand}"
+                         Grid.Column="1"
+                         Padding="0"
+                         Margin="12,0,0,0"/>
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16">
+
+            <!-- Popular Section -->
+            <Label Text="Popular" FontSize="20" FontAttributes="Bold" Margin="0,0,0,8" TextColor="Black" />
+
+            <CollectionView ItemsSource="{Binding PopularMovies}" 
+                            ItemsLayout="HorizontalList"
+                            HeightRequest="230"
+                            Margin="0,0,0,16">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Movie">
+                        <Frame Padding="8"
+                               Margin="4"
+                               WidthRequest="150"
+                               HasShadow="False"
+                               CornerRadius="12"
+                               BorderColor="Transparent"
+                               BackgroundColor="White">
+                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image Source="{Binding PosterUrl}" WidthRequest="100" HeightRequest="140" Aspect="AspectFill" />
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="14" HorizontalTextAlignment="Center" TextColor="Black" />
+                                <Label Text="{Binding Overview}" FontSize="12" LineBreakMode="TailTruncation" MaxLines="2" HorizontalTextAlignment="Center" TextColor="Black"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Now Playing Section -->
+            <Label Text="Now Playing" FontSize="20" FontAttributes="Bold" Margin="0,0,0,8" TextColor="Black" />
+
+            <CollectionView ItemsSource="{Binding NowPlayingMovies}" 
+                            ItemsLayout="VerticalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Movie">
+                        <Grid Padding="8" ColumnSpacing="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding PosterUrl}" WidthRequest="80" HeightRequest="120" Grid.Column="0" Aspect="AspectFill" />
+
+                            <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="14" TextColor="Black" />
+                                <Label Text="{Binding Overview}" FontSize="12" LineBreakMode="TailTruncation" MaxLines="3" TextColor="Black" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

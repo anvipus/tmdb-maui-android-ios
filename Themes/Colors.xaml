@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="MyMauiApp.Themes.Colors">
+
+    <!-- Warna Utama -->
+    <Color x:Key="PrimaryColor">#512BD4</Color>
+    <Color x:Key="PrimaryDarkColor">#311B92</Color>
+    <Color x:Key="PrimaryLightColor">#B39DDB</Color>
+
+    <!-- Warna Sekunder -->
+    <Color x:Key="SecondaryColor">#03DAC5</Color>
+    <Color x:Key="SecondaryDarkColor">#00BFA5</Color>
+    <Color x:Key="SecondaryLightColor">#A7FFEB</Color>
+
+    <!-- Warna Teks -->
+    <Color x:Key="TextPrimary">#212121</Color>
+    <Color x:Key="TextSecondary">#757575</Color>
+    <Color x:Key="TextWhite">#FFFFFF</Color>
+
+    <!-- Warna Background -->
+    <Color x:Key="BackgroundLight">#FAFAFA</Color>
+    <Color x:Key="BackgroundDark">#121212</Color>
+
+    <!-- Status Colors -->
+    <Color x:Key="SuccessColor">#4CAF50</Color>
+    <Color x:Key="ErrorColor">#F44336</Color>
+    <Color x:Key="WarningColor">#FFC107</Color>
+    <Color x:Key="InfoColor">#2196F3</Color>
+
+</ResourceDictionary>
